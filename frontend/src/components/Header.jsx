@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import logo from "../images/logo.png";
+import "../styles/Header.css";
 
 const Header = () => {
   return (
-    <div>Header</div>
-  )
-}
+    <header className="header">
+      <div className="logo">
+        <img src={logo} alt="Letterboxd" />
+      </div>
+    </header>
+  );
+};
 
-export default Header
+export default Header;
