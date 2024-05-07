@@ -5,7 +5,15 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 export const signup = async (req, res) => {
   try {
     //inputs from the user
-    const { fullName, username, password, confirmPassword, gender } = req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      username,
+      password,
+      confirmPassword,
+      gender,
+    } = req.body;
 
     // check if passwords do not match
     if (password !== confirmPassword) {
@@ -28,7 +36,9 @@ export const signup = async (req, res) => {
     const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
     const newUser = new User({
-      fullName,
+      firstName,
+      lastName,
+      email,
       username,
       password: hashedPassword,
       gender,
@@ -41,7 +51,9 @@ export const signup = async (req, res) => {
 
       res.status(201).json({
         _id: newUser._id,
-        fullName: newUser.fullName,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email,
         username: newUser.username,
         profilePic: newUser.profilePic,
       });
