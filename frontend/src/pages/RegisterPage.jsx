@@ -4,19 +4,36 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import GenderCheckbox from "./GenderCheckbox";
+import useSignup from "../hooks/useSignup";
 
 const RegisterPage = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    // e.preventDefault();
-    // Add logic to handle registration submission
-    console.log("Registering with:", username, password);
+  const [inputs, setInputs] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    gender: "",
+  });
+
+  const { loading, signup } = useSignup();
+
+  const handleCheckBoxChange = (gender) => {
+    setInputs({ ...inputs, gender });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Registering with:", inputs);
+    await signup(inputs);
   };
 
   return (
@@ -39,8 +56,10 @@ const RegisterPage = () => {
                     type="text"
                     placeholder="John"
                     className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    value={inputs.firstName}
+                    onChange={(e) =>
+                      setInputs({ ...inputs, firstName: e.target.value })
+                    }
                   />
                 </div>
                 <div className="form-group mb-5">
@@ -49,8 +68,10 @@ const RegisterPage = () => {
                     type="text"
                     placeholder="Doe"
                     className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    value={inputs.lastName}
+                    onChange={(e) =>
+                      setInputs({ ...inputs, lastName: e.target.value })
+                    }
                   />
                 </div>
                 <div className="form-group mb-5">
@@ -59,8 +80,10 @@ const RegisterPage = () => {
                     type="text"
                     placeholder="John.Doe@gmail.com"
                     className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={inputs.email}
+                    onChange={(e) =>
+                      setInputs({ ...inputs, email: e.target.value })
+                    }
                   />
                 </div>
                 <div className="form-group mb-5">
@@ -69,8 +92,10 @@ const RegisterPage = () => {
                     type="text"
                     placeholder="johndoe"
                     className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={inputs.username}
+                    onChange={(e) =>
+                      setInputs({ ...inputs, username: e.target.value })
+                    }
                   />
                 </div>
                 <div className="form-group mb-5">
@@ -79,8 +104,10 @@ const RegisterPage = () => {
                     type="password"
                     placeholder="Enter Password"
                     className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={inputs.password}
+                    onChange={(e) =>
+                      setInputs({ ...inputs, password: e.target.value })
+                    }
                   />
                 </div>
                 <div className="form-group mb-5">
@@ -89,18 +116,28 @@ const RegisterPage = () => {
                     type="password"
                     placeholder="Confirm Password"
                     className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    value={inputs.confirmPassword}
+                    onChange={(e) =>
+                      setInputs({ ...inputs, confirmPassword: e.target.value })
+                    }
                   />
                 </div>
 
-                <GenderCheckbox />
+                <GenderCheckbox
+                  onCheckBoxChange={handleCheckBoxChange}
+                  selectedGender={inputs.gender}
+                />
 
                 <button
                   type="submit"
                   className="button bg-green-600 text-white px-5 py-2.5 border-none cursor-pointer text-lg uppercase rounded-lg font-bold hover:bg-green-500"
+                  disabled={loading}
                 >
-                  Register
+                  {loading ? (
+                    <span className="loading loading-spinner"></span>
+                  ) : (
+                    "Sign Up"
+                  )}
                 </button>
               </div>
               <p className="reg-p text-white">
