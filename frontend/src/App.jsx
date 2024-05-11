@@ -16,7 +16,6 @@ function App() {
   return (
     <div>
       {/* <Router> */}
-      {/* <div className="p-4 h-screen items-center justify-center"> */}
       <Routes>
         <Route
           path="/"
@@ -31,7 +30,6 @@ function App() {
           element={authUser ? <ChatPage /> : <Navigate to="/" />}
         ></Route>
       </Routes>
-      {/* </div> */}
       {/* </Router> */}
       <Toaster position="bottom-right" reverseOrder={false} />
     </div>

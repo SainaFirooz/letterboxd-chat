@@ -5,7 +5,7 @@ import logo from "../images/dots_logo.png";
 
 const Footer = () => {
   return (
-    <footer className="footer p-0 bg-neutral text-neutral-content w-full">
+    <footer className="footer fixed p-0 bg-neutral text-neutral-content w-full ">
       <aside className="p-2">
         <img
           src={logo}
