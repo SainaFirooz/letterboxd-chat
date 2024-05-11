@@ -55,7 +55,7 @@ const RegisterPage = () => {
                   <input
                     type="text"
                     placeholder="John"
-                    className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
+                    className="w-full input input-bordered h-10 border-gray-300 rounded-lg text-letterboxd"
                     value={inputs.firstName}
                     onChange={(e) =>
                       setInputs({ ...inputs, firstName: e.target.value })
@@ -67,7 +67,7 @@ const RegisterPage = () => {
                   <input
                     type="text"
                     placeholder="Doe"
-                    className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
+                    className="w-full input input-bordered h-10 border-gray-300 rounded-lg text-letterboxd"
                     value={inputs.lastName}
                     onChange={(e) =>
                       setInputs({ ...inputs, lastName: e.target.value })
@@ -79,7 +79,7 @@ const RegisterPage = () => {
                   <input
                     type="text"
                     placeholder="John.Doe@gmail.com"
-                    className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
+                    className="w-full input input-bordered h-10 border-gray-300 rounded-lg text-letterboxd"
                     value={inputs.email}
                     onChange={(e) =>
                       setInputs({ ...inputs, email: e.target.value })
@@ -91,7 +91,7 @@ const RegisterPage = () => {
                   <input
                     type="text"
                     placeholder="johndoe"
-                    className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
+                    className="w-full input input-bordered h-10 border-gray-300 rounded-lg text-letterboxd"
                     value={inputs.username}
                     onChange={(e) =>
                       setInputs({ ...inputs, username: e.target.value })
@@ -103,7 +103,7 @@ const RegisterPage = () => {
                   <input
                     type="password"
                     placeholder="Enter Password"
-                    className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
+                    className="w-full input input-bordered h-10 border-gray-300 rounded-lg text-letterboxd"
                     value={inputs.password}
                     onChange={(e) =>
                       setInputs({ ...inputs, password: e.target.value })
@@ -115,7 +115,7 @@ const RegisterPage = () => {
                   <input
                     type="password"
                     placeholder="Confirm Password"
-                    className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
+                    className="w-full input input-bordered h-10 border-gray-300 rounded-lg text-letterboxd"
                     value={inputs.confirmPassword}
                     onChange={(e) =>
                       setInputs({ ...inputs, confirmPassword: e.target.value })
