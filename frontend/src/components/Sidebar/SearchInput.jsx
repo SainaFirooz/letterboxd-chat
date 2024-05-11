@@ -18,12 +18,18 @@ const SearchInput = () => {
     }
 
     const conversation = conversations.find((c) =>
-      c.firstName.toLowerCase().includes(search.toLowerCase())
+      // c.firstName.toLowerCase().includes(search.toLowerCase())
+      c.username.toLowerCase().includes(search.toLowerCase())
     );
 
     if (conversation) {
       setSelectedConversation(conversation);
       setSearch("");
+
+      const conversationElement = document.getElementById(conversation.id);
+      if (conversationElement) {
+        conversationElement.scrollIntoView({ behavior: "smooth" });
+      }
     } else {
       toast.error("No such user found!");
     }
@@ -33,8 +39,8 @@ const SearchInput = () => {
     <form onSubmit={handleSubmit} className="flex items-center gap-2">
       <input
         type="text"
-        placeholder="Search..."
-        className="input input-bordered rounded-full"
+        placeholder="Search by username"
+        className="input input-bordered rounded-full  w-[180px] text-sm"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
