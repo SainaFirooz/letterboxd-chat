@@ -67,7 +67,7 @@ const useSignup = () => {
 
 export default useSignup;
 
-function handleInputErrors({
+const handleInputErrors = ({
   firstName,
   lastName,
   email,
@@ -75,7 +75,10 @@ function handleInputErrors({
   password,
   confirmPassword,
   gender,
-}) {
+}) => {
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
   if (
     !firstName ||
     !lastName ||
@@ -88,14 +91,56 @@ function handleInputErrors({
     toast.error("Please fill in all fields");
     return false;
   }
+
+  if (!emailRegex.test(email)) {
+    toast.error("Invalid email format");
+    return false;
+  }
+
+  if (!passwordRegex.test(password)) {
+    toast.error(
+      "Password must contain at least one number, one lowercase and one uppercase letter, and be at least 6 characters long"
+    );
+    return false;
+  }
+
   if (password !== confirmPassword) {
     toast.error("Passwords do not match");
     return false;
   }
-  if (password.length < 6) {
-    toast.error("Password must be at least 6 characters long");
-    return false;
-  }
 
   return true;
-}
+};
+
+// function handleInputErrors({
+//   firstName,
+//   lastName,
+//   email,
+//   username,
+//   password,
+//   confirmPassword,
+//   gender,
+// }) {
+//   if (
+//     !firstName ||
+//     !lastName ||
+//     !email ||
+//     !username ||
+//     !password ||
+//     !confirmPassword ||
+//     !gender
+//   ) {
+//     toast.error("Please fill in all fields");
+//     return false;
+//   }
+//   if (password !== confirmPassword) {
+//     toast.error("Passwords do not match");
+//     return false;
+//   }
+//   if (password.length < 6) {
+//     toast.error("Password must be at least 6 characters long");
+//     return false;
+//   }
+
+//   return true;
+// }
