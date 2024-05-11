@@ -33,7 +33,7 @@ const LoginPage = () => {
                       type="text"
                       // id="username"
                       // name="username"
-                      className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
+                      className="w-full input input-bordered h-10 border-gray-300 rounded-lg text-letterboxd"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                     />
@@ -46,7 +46,7 @@ const LoginPage = () => {
                       type="password"
                       // id="password"
                       // name="password"
-                      className="input w-11/12 px-2.5 py-2.5 border border-gray-300 rounded-lg text-letterboxd"
+                      className="w-full input input-bordered h-10 border-gray-300 rounded-lg text-letterboxd"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -73,7 +73,7 @@ const LoginPage = () => {
             </div>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );
