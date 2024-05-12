@@ -1,4 +1,4 @@
-﻿                                                                                   Letterboxd MERN chat app
+﻿                                                         Letterboxd MERN chat app
 
 Backend project for backend 1 course
 
