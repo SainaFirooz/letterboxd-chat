@@ -14,7 +14,7 @@ Environment Variables (backend only):
 
   PORT=5000
 
-  MONGO_URI=mongodb+srv://sainafirooz:86ETllUdfcpf2fQk@letterboxd.le0rqtt.mongodb.net/Letterboxd?retryWrites=true&w=majority&appName=Letterboxd
+  MONGO_URI=
 
   JWT_SECRET_KEY=
 
